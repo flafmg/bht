@@ -1,6 +1,6 @@
 # Better Home & TPA (BHT)
 
-BHT is a Bukkit plugin designed to enhance the home teleportation experience for players on Minecraft servers. With BHT, players can set multiple homes, teleport to their homes with ease, and send teleport requests to other players for quick and convenient travel.
+BHT is a minecraft plugin designed to enhance the home teleportation experience for players on Minecraft servers. With BHT, players can set multiple homes, teleport to their homes with ease, and send teleport requests to other players for quick and convenient travel.
 
 ## Features
 
