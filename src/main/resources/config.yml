@@ -1,0 +1,33 @@
+teleport-wait-time: 5
+teleport-request-expire: 30
+teleport-coolDown: 3
+
+home-limit:
+  default: 3
+  group-name: 10
+
+Messages:
+  prefix: "&6[BHT]"
+  invalid-command: "%prefix% &cUso incorreto."
+  teleport-request-sent: "%prefix% &fPedido de teleporte enviado para &3%player%&f!"
+  teleport-request-received: "%prefix% &fVocê recebeu um pedido de teleporte de &3%player%&f. Use &a/tpaccept &fpara aceitar ou &c/tpacancel &fpara rejeitar."
+  teleport-request-expired: "%prefix% &fSeu pedido de teleporte para &3%player%&f expirou."
+  teleport-request-not-found: "%prefix% &fPedido de teleporte não encontrado."
+  teleport-request-player-not-found: "%prefix% &ceste jogador não esta online"
+  teleport-request-accepted: "%prefix% &fVocê aceitou o pedido de teleporte de &3%player%&f."
+  teleport-request-denied: "%prefix% &fVocê recusou o pedido de teleporte de &3%player%&f."
+  teleport-cancelled: "%prefix% &fTeleporte &ccancelado."
+  teleport-wait: "%prefix% &fAguarde &3%time% &7segundos antes de executar este comando."
+  home-set: "%prefix% &fSua home &3%home% &ffoi definida com sucesso!"
+  home-remove: "%prefix% &fA home &3%home% &ffoi &cdeletada&f."
+  home-list-header: "%prefix% &fHomes de &3%player%:"
+  home-list-item: "&f- &3%home%&f: %location% | %world%"
+  home-list-empty: "%prefix% &3%player% &fnão possui nenhuma home."
+  home-limit-reached: "%prefix% &cVocê atingiu o limite máximo de homes."
+  home-not-found: "%prefix% &fHome '&3%home%&f' não encontrada."
+
+Titles:
+  teleporting-home-title: "&6Teleportando para %home%"
+  teleporting-home-subtitle: "&fNão se mova"
+  teleporting-player-title: "&6Teleportando para %player%"
+  teleporting-player-subtitle: "&fNão se mova"
