@@ -48,7 +48,7 @@ public class TPAManager {
         List<Player> requesters = tpaRequests.get(player);
         if (requesters != null && !requesters.isEmpty()) {
             Player requester = requesters.get(requesters.size() - 1);
-            teleportManager.addTeleportation(requester, player.getLocation());
+            teleportManager.addTeleportation(requester, player.getLocation(), player.getName());
             requesters.remove(requester);
             if (requesters.isEmpty()) {
                 tpaRequests.remove(player);
@@ -65,7 +65,7 @@ public class TPAManager {
     public boolean acceptRequest(Player player, Player requester) {
         List<Player> requesters = tpaRequests.get(player);
         if (requesters != null && requesters.contains(requester)) {
-            teleportManager.addTeleportation(requester, player.getLocation());
+            teleportManager.addTeleportation(requester, player.getLocation(), player.getName());
             requesters.remove(requester);
             if (requesters.isEmpty()) {
                 tpaRequests.remove(player);

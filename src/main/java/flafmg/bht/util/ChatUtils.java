@@ -1,9 +1,11 @@
 package flafmg.bht.util;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.Map;
+import java.util.logging.Level;
 
 public class ChatUtils {
 
@@ -13,11 +15,15 @@ public class ChatUtils {
             String value = entry.getValue();
             message = message.replace(placeholder, value);
         }
+        return translateColor(message);
+    }
+    public static String translateColor(String message) {
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
+
     public static void log(String message) {
-        System.out.println(ChatColor.translateAlternateColorCodes('&', "&6[BHT] &r" + message));
+        Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 
     public static void sendTitle(Player player, String title, String subtitle, Map<String, String> placeholders) {

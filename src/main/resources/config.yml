@@ -20,14 +20,49 @@ Messages:
   teleport-wait: "%prefix% &fAguarde &3%time% &7segundos antes de executar este comando."
   home-set: "%prefix% &fSua home &3%home% &ffoi definida com sucesso!"
   home-remove: "%prefix% &fA home &3%home% &ffoi &cdeletada&f."
-  home-list-header: "%prefix% &fHomes de &3%player%:"
-  home-list-item: "&f- &3%home%&f: %location% | %world%"
-  home-list-empty: "%prefix% &3%player% &fnão possui nenhuma home."
   home-limit-reached: "%prefix% &cVocê atingiu o limite máximo de homes."
+  home-visibility-changed: "%prefix% &3%home% &f agora é &3%status%"
+  home-visibility-public: "&apublica"
+  home-visibility-private: "&cprivada"
   home-not-found: "%prefix% &fHome '&3%home%&f' não encontrada."
 
 Titles:
-  teleporting-home-title: "&6Teleportando para %home%"
-  teleporting-home-subtitle: "&fNão se mova"
-  teleporting-player-title: "&6Teleportando para %player%"
-  teleporting-player-subtitle: "&fNão se mova"
+  teleporting-title: "&6Teleportando para %target%"
+  teleporting-subtitle: "&fNão se mova"
+
+Menus:
+  confirm-menu:
+    menu-title: "Ir para &3%target%?"
+    menu-confirm-item-name: "&aConfirmar"
+    menu-cancel-item-name: "&cCancelar"
+  homes-menu:
+    menu-title: "homes de &3%player% | Página %page%/%pages%"
+    menu-home-item-name: "&6%home%"
+    menu-home-item-lore: "&aPosição: &f%position% \n&aMundo: &f%world% \n&aBioma: &f%biome%\n&aStatus: &f%status%"
+    menu-page-item: "&aPágina: &f%page&"
+    menu-next-page-item: "&aPróxima página"
+    menu-previous-page-item: "&aPágina anterior"
+
+    menu-item-biomes-list: #tuned to 1.20 biomes
+      PLAINS: GRASS_BLOCK
+      SUNFLOWER_PLAINS: GRASS_BLOCK
+      FOREST: OAK_LOG
+      BIRCH_FOREST: BIRCH_LOG
+      OLD_GROWTH_BIRCH_FOREST: BIRCH_LOG
+      DARK_FOREST: DARK_OAK_LOG
+      TAIGA: SPRUCE_LOG
+      SNOWY_TAIGA: SPRUCE_LOG
+      GROVE: SPRUCE_LOG
+      CHERRY_GROVE: CHERRY_LOG
+      DESERT: SANDSTONE
+      BEACH: SAND
+      JUNGLE: JUNGLE_LOG
+      SWAMP: SLIME_BLOCK
+      JAGGED_PEAKS: STONE
+      SAVANNA: ACACIA_LOG
+      BADLANDS: RED_SANDSTONE
+      ICE_SPIKES: PACKED_ICE
+      THE_VOID: BARRIER
+      #CUSTOM_BIOME: ITEM
+
+

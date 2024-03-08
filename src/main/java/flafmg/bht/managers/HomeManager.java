@@ -4,7 +4,6 @@ import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import flafmg.bht.Data.HomeData;
-import flafmg.bht.util.Utils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -22,6 +21,7 @@ public class HomeManager {
     private final ConfigManager configManager;
     private Map<String, List<HomeData>> playerHomes; // playerUUID : List<HomeData>
 
+
     public HomeManager(Plugin plugin, ConfigManager configManager) {
         this.plugin = plugin;
         this.configManager = configManager;
@@ -29,23 +29,24 @@ public class HomeManager {
     }
 
     public boolean addHome(Player player, String homeName, Location location, boolean status) {
+
         String playerName = player.getName();
         List<HomeData> homes = playerHomes.computeIfAbsent(playerName, h -> new ArrayList<>());
 
         homes.removeIf(home -> home.getHomeName().equalsIgnoreCase(homeName));
-
-        if(homes.size() >= configManager.getHomeLimit(player)){
+        if(homes.size() >= configManager.getHomeLimit(player) && !player.hasPermission("bht.bypass-home-limit")){
             return false;
         }
 
         homes.add(new HomeData(homeName, location, status));
         save();
+
         return true;
     }
 
     public boolean removeHome(String playerName, String homeName) {
         List<HomeData> homes = playerHomes.get(playerName);
-        if (homes != null) {
+        if (homes != null && getHomeData(playerName, homeName) != null) {
             homes.removeIf(home -> home.getHomeName().equalsIgnoreCase(homeName));
             save();
             return true;
@@ -78,10 +79,35 @@ public class HomeManager {
         }
         return null;
     }
-
     public List<HomeData> getPlayerHomes(String playerName) {
         return playerHomes.getOrDefault(playerName, new ArrayList<>());
     }
+    public List<HomeData> getPublicPlayerHomes(String playerName) {
+        List<HomeData> publicHomes = new ArrayList<>();
+        List<HomeData> homes = playerHomes.getOrDefault(playerName, new ArrayList<>());
+
+        for (HomeData home : homes) {
+            if (home.isPublic()) {
+                publicHomes.add(home);
+            }
+        }
+
+        return publicHomes;
+    }
+    public List<String> getHomeNamesWithPartialName(String playerName, String partialName) {
+        List<String> matchingHomeNames = new ArrayList<>();
+        List<HomeData> homes = getPlayerHomes(playerName);
+
+        for (HomeData home : homes) {
+            String homeName = home.getHomeName();
+            if (homeName.startsWith(partialName)) {
+                matchingHomeNames.add(homeName);
+            }
+        }
+
+        return matchingHomeNames;
+    }
+
 
     private void save() {
         File dataFile = new File(plugin.getDataFolder(), "homes.json");

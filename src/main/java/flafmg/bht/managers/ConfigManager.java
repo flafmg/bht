@@ -1,6 +1,8 @@
 package flafmg.bht.managers;
 
+import flafmg.bht.util.ChatUtils;
 import flafmg.bht.util.Utils;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -12,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigManager {
+    private final Plugin plugin;
     private int teleportWaitTime;
     private int teleportRequestExpire;
     private int teleportCoolDown;
@@ -32,17 +35,31 @@ public class ConfigManager {
     private String teleportWait;
     private String homeSet;
     private String homeRemove;
-    private String homeListHeader;
-    private String homeListItem;
-    private String homeListEmpty;
+    private String homeVisibilityChanged;
+    private String homeVisibilityPublic;
+    private String homeVisibilityPrivate;
     private String homeLimitReached;
     private String homeNotFound;
-    private String teleportingHomeTitle;
-    private String teleportingHomeSubtitle;
-    private String teleportingPlayerTitle;
-    private String teleportingPlayerSubtitle;
+    private String teleportingTitle;
+    private String teleportingSubtitle;
+
+    private String confirmMenuTitle;
+    private String confirmMenuConfirmItemName;
+    private String confirmMenuCancelItemName;
+
+    private String homesMenuTitle;
+    private String homesMenuItemName;
+    private String homesMenuItemLore;
+    private String homesMenuPageItem;
+    private String homesMenuNextPageItem;
+    private String homesMenuPreviousPageItem;
+    private Map<String, Material> biomeBlocks; // Mapa de biomas para blocos correspondentes
+
+
 
     public ConfigManager(Plugin plugin) {
+        this.plugin = plugin;
+
         File file = new File(plugin.getDataFolder(), "config.yml");
 
         if (!file.exists()) {
@@ -82,16 +99,39 @@ public class ConfigManager {
         teleportWait = config.getString("Messages.teleport-wait");
         homeSet = config.getString("Messages.home-set");
         homeRemove = config.getString("Messages.home-remove");
-        homeListHeader = config.getString("Messages.home-list-header");
-        homeListItem = config.getString("Messages.home-list-item");
-        homeListEmpty = config.getString("Messages.home-list-empty");
+        homeVisibilityChanged = config.getString("Messages.home-visibility-changed");
+        homeVisibilityPublic = config.getString("Messages.home-visibility-public");
+        homeVisibilityPrivate = config.getString("Messages.home-visibility-private");
         homeLimitReached = config.getString("Messages.home-limit-reached");
         homeNotFound = config.getString("Messages.home-not-found");
 
-        teleportingHomeTitle = config.getString("Titles.teleporting-home-title");
-        teleportingHomeSubtitle = config.getString("Titles.teleporting-home-subtitle");
-        teleportingPlayerTitle = config.getString("Titles.teleporting-player-title");
-        teleportingPlayerSubtitle = config.getString("Titles.teleporting-player-subtitle");
+        teleportingTitle = config.getString("Titles.teleporting-title");
+        teleportingSubtitle = config.getString("Titles.teleporting-subtitle");
+
+        confirmMenuTitle = config.getString("Menus.confirm-menu.menu-title");
+        confirmMenuConfirmItemName = config.getString("Menus.confirm-menu.menu-confirm-item-name");
+        confirmMenuCancelItemName = config.getString("Menus.confirm-menu.menu-cancel-item-name");
+
+
+        homesMenuTitle = config.getString("Menus.homes-menu.menu-title");
+        homesMenuItemName = config.getString("Menus.homes-menu.menu-home-item-name");
+        homesMenuItemLore = config.getString("Menus.homes-menu.menu-home-item-lore");
+        homesMenuPageItem = config.getString("Menus.homes-menu.menu-page-item");
+        homesMenuNextPageItem = config.getString("Menus.homes-menu.menu-next-page-item");
+        homesMenuPreviousPageItem = config.getString("Menus.homes-menu.menu-previous-page-item");
+        biomeBlocks = new HashMap<>();
+        ConfigurationSection biomeSection = config.getConfigurationSection("Menus.homes-menu.menu-item-biomes-list");
+        if (biomeSection != null) {
+            for (String biomeName : biomeSection.getKeys(false)) {
+                Material blockMaterial = Material.matchMaterial(biomeSection.getString(biomeName));
+                if (blockMaterial != null) {
+                    biomeBlocks.put(biomeName, blockMaterial);
+                }
+            }
+        }
+
+
+        sanityCheck();
     }
 
     public int getTeleportWaitTime() {
@@ -162,13 +202,6 @@ public class ConfigManager {
         return homeRemove;
     }
 
-    public String getHomeListHeader() {
-        return homeListHeader;
-    }
-
-    public String getHomeListItem() {
-        return homeListItem;
-    }
 
     public String getHomeLimitReached() {
         return homeLimitReached;
@@ -178,29 +211,18 @@ public class ConfigManager {
         return homeNotFound;
     }
 
-    public String getTeleportingHomeTitle() {
-        return teleportingHomeTitle;
+    public String getTeleportingTitle() {
+        return teleportingTitle;
     }
 
-    public String getTeleportingHomeSubtitle() {
-        return teleportingHomeSubtitle;
-    }
-
-    public String getTeleportingPlayerTitle() {
-        return teleportingPlayerTitle;
-    }
-
-    public String getTeleportingPlayerSubtitle() {
-        return teleportingPlayerSubtitle;
+    public String getTeleportingSubtitle() {
+        return teleportingSubtitle;
     }
 
     public String getInvalidCommand() {
         return invalidCommand;
     }
 
-    public String getHomeListEmpty() {
-        return homeListEmpty;
-    }
 
     public int getHomeLimit(Player player) {
         for (String group : homeLimits.keySet()) {
@@ -213,5 +235,112 @@ public class ConfigManager {
 
     public String getTeleportRequestPlayerNotFound() {
         return teleportRequestPlayerNotFound;
+    }
+
+    public String getHomesMenuTitle() {
+        return homesMenuTitle;
+    }
+
+    public String getHomesMenuItemName() {
+        return homesMenuItemName;
+    }
+
+    public String getHomesMenuItemLore() {
+        return homesMenuItemLore;
+    }
+
+    public String getHomesMenuPageItem() {
+        return homesMenuPageItem;
+    }
+
+    public String getHomesMenuNextPageItem() {
+        return homesMenuNextPageItem;
+    }
+
+    public String getHomesMenuPreviousPageItem() {
+        return homesMenuPreviousPageItem;
+    }
+
+    public Material getBlockForBiome(String biomeName) {
+        return biomeBlocks.getOrDefault(biomeName, Material.STONE);
+    }
+
+    public String getHomeVisibilityChanged() {
+        return homeVisibilityChanged;
+    }
+
+    public String getHomeVisibilityPublic() {
+        return homeVisibilityPublic;
+    }
+
+    public String getHomeVisibilityPrivate() {
+        return homeVisibilityPrivate;
+    }
+
+
+    private void sanityCheck() {
+        checkForNull(confirmMenuTitle, "Menus.confirm-menu.menu-title");
+        checkForNull(confirmMenuConfirmItemName, "Menus.confirm-menu.menu-confirm-item-name");
+        checkForNull(confirmMenuCancelItemName, "Menus.confirm-menu.menu-cancel-item-name");
+
+        checkForNull(homesMenuTitle, "Menus.homes-menu.menu-title");
+        checkForNull(homesMenuItemName, "Menus.homes-menu.menu-home-item-name");
+        checkForNull(homesMenuItemLore, "Menus.homes-menu.menu-home-item-lore");
+        checkForNull(homesMenuPageItem, "Menus.homes-menu.menu-page-item");
+        checkForNull(homesMenuNextPageItem, "Menus.homes-menu.menu-next-page-item");
+        checkForNull(homesMenuPreviousPageItem, "Menus.homes-menu.menu-previous-page-item");
+
+        checkForNull(prefix, "Messages.prefix");
+        checkForNull(invalidCommand, "Messages.invalid-command");
+        checkForNull(teleportRequestSent, "Messages.teleport-request-sent");
+        checkForNull(teleportRequestReceived, "Messages.teleport-request-received");
+        checkForNull(teleportRequestExpired, "Messages.teleport-request-expired");
+        checkForNull(teleportRequestNotFound, "Messages.teleport-request-not-found");
+        checkForNull(teleportRequestPlayerNotFound, "Messages.teleport-request-player-not-found");
+        checkForNull(teleportRequestAccepted, "Messages.teleport-request-accepted");
+        checkForNull(teleportRequestDenied, "Messages.teleport-request-denied");
+        checkForNull(teleportCancelled, "Messages.teleport-cancelled");
+        checkForNull(teleportWait, "Messages.teleport-wait");
+        checkForNull(homeSet, "Messages.home-set");
+        checkForNull(homeRemove, "Messages.home-remove");
+        checkForNull(homeVisibilityChanged, "Messages.home-visibility-changed");
+        checkForNull(homeVisibilityPublic, "messages.home-visibility-public");
+        checkForNull(homeVisibilityPrivate, "messages.home-visibility-private");
+        checkForNull(homeLimitReached, "Messages.home-limit-reached");
+        checkForNull(homeNotFound, "Messages.home-not-found");
+        checkForNull(teleportingTitle, "Titles.teleporting-title");
+        checkForNull(teleportingSubtitle, "Titles.teleporting-subtitle");
+
+        checkForNull(teleportWaitTime, "teleport-wait-time");
+        checkForNull(teleportRequestExpire, "teleport-request-expire");
+        checkForNull(teleportCoolDown, "teleport-coolDown");
+        checkForNull(defaultHomeLimit, "home-limit.default");
+        checkForNull(homeLimits, "home-limit");
+        checkForNull(homeValue, "economy.home-value");
+        checkForNull(tpaValue, "economy.tpa-value");
+        checkForNull(biomeBlocks, "Menus.homes-menu.menu-item-biomes-list");
+
+        ChatUtils.log("&6[bht] &rConfig's sanity check &apassed!");
+    }
+    private <T> void checkForNull(T value, String configPath) {
+        if (value == null) {
+            System.err.println("Config's sanity check error, disabling plugin!");
+            System.err.println("in: " + configPath + ", please fix the issue");
+
+            plugin.getServer().getPluginManager().disablePlugin(plugin);
+        }
+
+    }
+
+    public String getConfirmMenuTitle() {
+        return confirmMenuTitle;
+    }
+
+    public String getConfirmMenuConfirmItemName() {
+        return confirmMenuConfirmItemName;
+    }
+
+    public String getConfirmMenuCancelItemName() {
+        return confirmMenuCancelItemName;
     }
 }

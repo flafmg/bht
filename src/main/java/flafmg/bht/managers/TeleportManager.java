@@ -1,5 +1,6 @@
 package flafmg.bht.managers;
 
+import flafmg.bht.util.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -12,15 +13,17 @@ import java.util.Map;
 public class TeleportManager {
     private final Plugin plugin;
     private EffectsManager effectsManager;
+    private ConfigManager configManager;
     private Map<Player, BukkitTask> teleportTasks;
 
-    public TeleportManager(Plugin plugin, EffectsManager effectsManager) {
+    public TeleportManager(Plugin plugin, EffectsManager effectsManager, ConfigManager configManager) {
         this.plugin = plugin;
         this.effectsManager = effectsManager;
+        this.configManager = configManager;
         this.teleportTasks = new HashMap<>();
     }
 
-    public void addTeleportation(Player player, Location destination) {
+    public void addTeleportation(Player player, Location destination, String destinationName) {
         if(isPlayerPendingTeleport(player)){
             cancelTeleportation(player);
         }
@@ -33,6 +36,7 @@ public class TeleportManager {
         }, 100L);
         teleportTasks.put(player, task);
         effectsManager.showTeleportParticles(player, destination);
+        ChatUtils.sendTitle(player, configManager.getTeleportingTitle(), configManager.getTeleportingSubtitle(), Map.of("%player%", player.getName(),"%target%", destinationName));
     }
 
     public void cancelTeleportation(Player player) {

@@ -2,65 +2,31 @@ name: BHT
 version: "0.4"
 main: flafmg.bht.BHT
 api-version: '1.16'
-prefix: "Better Home & TPA"
+prefix: "BHT"
 authors:
   - flafmg
 
 permissions:
   bht.admin:
-    description: Allows the execution of admin-only commands such as reload
+    description: Allows the execution of admin-only commands such as reload.
+    default: op
+  bht.bypass-home-limit:
+    description: Allows bypassing home limit restrictions.
     default: op
   bht.bypass-access:
     description: Allows bypassing home access restrictions.
     default: op
-  bht.sethome:
-    description: Allows setting a home.
-    default: true
-  bht.delhome:
-    description: Allows deleting a home.
-    default: true
-  bht.listhomes:
-    description: Allows listing homes.
-    default: true
+
   bht.home:
     description: Allows teleporting to a home.
     default: true
-  bht.tpa:
+  bht.tpr:
     description: Allows sending teleport requests.
     default: true
-  bht.tpaccept:
-    description: Allows accepting teleport requests.
-    default: true
-  bht.tpacancel:
-    description: Allows denying teleport requests.
-    default: true
+
 
 commands:
-  sethome:
-    description: Sets a home at the player's current location.
-    usage: /sethome <name> [public/private]
-    permission: bht.sethome
-  delhome:
-    description: Deletes a player's home.
-    usage: /delhome <name>
-    permission: bht.delhome
-  listhomes:
-    description: Lists a player's homes.
-    usage: /listhomes [player]
-    permission: bht.listhomes
   home:
-    description: Teleports to a home.
-    usage: /home [player] <name>
+    description: Home related commands
     permission: bht.home
-  tpa:
-    description: Sends a teleport request to another player.
-    usage: /tpa <player>
-    permission: bht.tpa
-  tpaccept:
-    description: Accepts a teleport request from another player.
-    usage: /tpaccept [player]
-    permission: bht.tpaccept
-  tpacancel:
-    description: Denies a teleport request from another player.
-    usage: /tpacancel [player]
-    permission: bht.tpdeny
+    usage: /home <home/set/del/info/manage>
