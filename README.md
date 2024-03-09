@@ -21,13 +21,11 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 
 ## Permissions 🔐
 
-- `bht.sethome`: Allows setting a home.
-- `bht.delhome`: Allows deleting a home.
-- `bht.listhomes`: Allows listing homes.
-- `bht.home`: Allows teleporting to a home.
-- `bht.tpa`: Allows sending teleport requests.
-- `bht.tpaccept`: Allows accepting teleport requests.
-- `bht.tpdeny`: Allows denying teleport requests.
+- `bht.admin`: Allows the execution of admin-only commands such as reload. (Default: OP)
+- `bht.bypass-home-limit`: Grants permission to bypass home limit restrictions. (Default: OP)
+- `bht.bypass-access`: Grants permission to bypass home access restrictions. (Default: OP)
+- `bht.home`: Grants permission to teleport to a home. (Default: True)
+- `bht.tpr`: Grants permission to send teleport requests. (Default: True)
 
 ## Installation 📥
 
