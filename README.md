@@ -1,4 +1,4 @@
-# Better Home & TP (BHT) 🏠🔗
+# Better Home & TP (BHT) 🏠
 
 BHT is a Minecraft plugin designed to enhance the home teleportation experience for players on Minecraft servers. With BHT, players can set multiple homes, teleport to their homes with ease, and send teleport requests to other players for quick and convenient travel.
 
