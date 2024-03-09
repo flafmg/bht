@@ -1,17 +1,15 @@
-# Better Home & TPA (BHT)
+# Better Home & TP (BHT) 🏠🔗
 
-BHT is a minecraft plugin designed to enhance the home teleportation experience for players on Minecraft servers. With BHT, players can set multiple homes, teleport to their homes with ease, and send teleport requests to other players for quick and convenient travel.
+BHT is a Minecraft plugin designed to enhance the home teleportation experience for players on Minecraft servers. With BHT, players can set multiple homes, teleport to their homes with ease, and send teleport requests to other players for quick and convenient travel.
 
-## Features
+## Features 🚀
 
-- **Multiple Homes**: Players can set multiple homes at different locations.
-- **Teleport Requests**: Send teleport requests to other players for quick travel.
-- **Cooldown System**: Prevents spamming of teleport commands with a cooldown timer.
-- **Customizable Messages**: Customize plugin messages to suit your server's style.
-- **Permission System**: Granular permission settings for controlling access to plugin features.
-- **Compatibility**: Works with various Bukkit server versions.
+- **Interactive GUIs**: Seamlessly set homes and manage teleport requests with intuitive graphical user interfaces.
+- **Visual Feedback**: Enhance immersion with decorative particles during teleportation, providing visual cues for the process.
+- **Vault API Integration**: Integrate with the Vault API for economy plugin support, allowing server owners to charge for teleportation and home services.
+- **Customizable Home Limits**: Set custom home limits based on player roles, providing flexibility and control over gameplay experiences.
 
-## Commands
+## Commands 🛠️
 
 - `/sethome <name> [public/private]`: Set a home at the player's current location.
 - `/delhome <name>`: Delete a player's home.
@@ -21,7 +19,7 @@ BHT is a minecraft plugin designed to enhance the home teleportation experience 
 - `/tpaccept [player]`: Accept a teleport request from another player.
 - `/tpdeny [player]`: Deny a teleport request from another player.
 
-## Permissions
+## Permissions 🔐
 
 - `bht.sethome`: Allows setting a home.
 - `bht.delhome`: Allows deleting a home.
@@ -31,25 +29,18 @@ BHT is a minecraft plugin designed to enhance the home teleportation experience 
 - `bht.tpaccept`: Allows accepting teleport requests.
 - `bht.tpdeny`: Allows denying teleport requests.
 
-## Installation
+## Installation 📥
 
 1. Download the BHT.jar file from the Releases section.
 2. Place the BHT.jar file into the plugins folder of your Bukkit server.
 3. Restart or reload the server to enable the plugin.
+4. Configure the plugin according to your likings.
 
-## Configuration
+## Support 🤝
 
-BHT comes with a configuration file (config.yml) where you can customize various settings such as cooldown times, message formats, and more.
+If you encounter any issues or have suggestions for improvement, youre welcome to open an issue on the [GitHub repository](https://github.com/flafmg/BHT/issues) :D.
 
-## Vault Integration
-
-BHT supports the use of the Vault API, allowing server owners to integrate economy plugins and charge players for their teleportation and homes.
-
-## Support
-
-If you encounter any issues or have suggestions for improvement, please open an issue on the GitHub repository.
-
-## About
+## About ℹ️
 
 BHT is developed and maintained by [flafmg](https://github.com/flafmg).
 
