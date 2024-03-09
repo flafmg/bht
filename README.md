@@ -12,10 +12,11 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 ## Screenshots 📸
 
 ![Homes GUI](https://github.com/flafmg/bht/assets/100975643/656840d7-6eed-4ca9-904f-50467036fee1)
+
 *Interface for Managing Homes*
 
-### Confirm GUI
 ![Confirm GUI](https://github.com/flafmg/bht/assets/100975643/0687fd2a-e045-4429-a323-01208dba9db7)
+
 *Confirmation Interface for Teleportation*
 
 
