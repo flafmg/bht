@@ -8,40 +8,40 @@ home-limit:
 
 Messages:
   prefix: "&6[BHT]"
-  invalid-command: "%prefix% &cUso incorreto."
-  teleport-request-sent: "%prefix% &fPedido de teleporte enviado para &3%player%&f!"
-  teleport-request-received: "%prefix% &fVocê recebeu um pedido de teleporte de &3%player%&f. Use &a/tpaccept &fpara aceitar ou &c/tpacancel &fpara rejeitar."
-  teleport-request-expired: "%prefix% &fSeu pedido de teleporte para &3%player%&f expirou."
-  teleport-request-not-found: "%prefix% &fPedido de teleporte não encontrado."
-  teleport-request-player-not-found: "%prefix% &ceste jogador não esta online"
-  teleport-request-accepted: "%prefix% &fVocê aceitou o pedido de teleporte de &3%player%&f."
-  teleport-request-denied: "%prefix% &fVocê recusou o pedido de teleporte de &3%player%&f."
-  teleport-cancelled: "%prefix% &fTeleporte &ccancelado."
-  teleport-wait: "%prefix% &fAguarde &3%time% &7segundos antes de executar este comando."
-  home-set: "%prefix% &fSua home &3%home% &ffoi definida com sucesso!"
-  home-remove: "%prefix% &fA home &3%home% &ffoi &cdeletada&f."
-  home-limit-reached: "%prefix% &cVocê atingiu o limite máximo de homes."
-  home-visibility-changed: "%prefix% &3%home% &f agora é &3%status%"
-  home-visibility-public: "&apublica"
-  home-visibility-private: "&cprivada"
-  home-not-found: "%prefix% &fHome '&3%home%&f' não encontrada."
+  invalid-command: "%prefix% &cIncorrect usage."
+  teleport-request-sent: "%prefix% &fTeleport request sent to &3%player%&f!"
+  teleport-request-received: "%prefix% &fYou have received a teleport request from &3%player%&f. Use &a/tpaccept &fto accept or &c/tpacancel &fto reject."
+  teleport-request-expired: "%prefix% &fYour teleport request to &3%player%&f has expired."
+  teleport-request-not-found: "%prefix% &fTeleport request not found."
+  teleport-request-player-not-found: "%prefix% &cThis player is not online."
+  teleport-request-accepted: "%prefix% &fYou accepted the teleport request from &3%player%&f."
+  teleport-request-denied: "%prefix% &fYou denied the teleport request from &3%player%&f."
+  teleport-cancelled: "%prefix% &fTeleport &ccancelled."
+  teleport-wait: "%prefix% &fWait &3%time% &7seconds before executing this command."
+  home-set: "%prefix% &fYour home &3%home% &fhas been set successfully!"
+  home-remove: "%prefix% &fHome &3%home% &fhas been &cremoved&f."
+  home-limit-reached: "%prefix% &cYou have reached the maximum home limit."
+  home-visibility-changed: "%prefix% &3%home% &fis now &3%status%"
+  home-visibility-public: "&apublic"
+  home-visibility-private: "&cprivate"
+  home-not-found: "%prefix% &fHome '&3%home%&f' not found."
 
 Titles:
-  teleporting-title: "&6Teleportando para %target%"
-  teleporting-subtitle: "&fNão se mova"
+  teleporting-title: "&6Teleporting to %target%"
+  teleporting-subtitle: "&fDon't move"
 
 Menus:
   confirm-menu:
-    menu-title: "Ir para &3%target%?"
-    menu-confirm-item-name: "&aConfirmar"
-    menu-cancel-item-name: "&cCancelar"
+    menu-title: "Go to &3%target%?"
+    menu-confirm-item-name: "&aConfirm"
+    menu-cancel-item-name: "&cCancel"
   homes-menu:
-    menu-title: "homes de &3%player% | Página %page%/%pages%"
+    menu-title: "%player%'s homes | Page %page%/%pages%"
     menu-home-item-name: "&6%home%"
-    menu-home-item-lore: "&aPosição: &f%position% \n&aMundo: &f%world% \n&aBioma: &f%biome%\n&aStatus: &f%status%"
-    menu-page-item: "&aPágina: &f%page&"
-    menu-next-page-item: "&aPróxima página"
-    menu-previous-page-item: "&aPágina anterior"
+    menu-home-item-lore: "&aPosition: &f%position% \n&aWorld: &f%world% \n&aBiome: &f%biome%\n&aStatus: &f%status%"
+    menu-page-item: "&aPage: &f%page&"
+    menu-next-page-item: "&aNext Page"
+    menu-previous-page-item: "&aPrevious Page"
 
     menu-item-biomes-list: #tuned to 1.20 biomes
       PLAINS: GRASS_BLOCK
@@ -64,5 +64,3 @@ Menus:
       ICE_SPIKES: PACKED_ICE
       THE_VOID: BARRIER
       #CUSTOM_BIOME: ITEM
-
-

@@ -16,7 +16,6 @@ permissions:
   bht.bypass-access:
     description: Allows bypassing home access restrictions.
     default: op
-
   bht.home:
     description: Allows teleporting to a home.
     default: true
