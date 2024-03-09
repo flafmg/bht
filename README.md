@@ -4,7 +4,7 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 
 ## Features 🚀
 
-- **Interactive GUIs**: Seamlessly set homes and manage teleport requests with intuitive graphical user interfaces.
+- **Interactive GUIs**: Seamlessly teleport to homes and manage teleport requests with intuitive graphical user interfaces.
 - **Visual Feedback**: Enhance immersion with decorative particles during teleportation, providing visual cues for the process.
 - **Vault API Integration**: Integrate with the Vault API for economy plugin support, allowing server owners to charge for teleportation and home services.
 - **Customizable Home Limits**: Set custom home limits based on player roles, providing flexibility and control over gameplay experiences.
