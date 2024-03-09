@@ -25,16 +25,16 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 
 ## Permissions 🔐
 
-- `bht.admin`: Allows the execution of admin-only commands such as reload. (Default: OP)
-- `bht.bypass-home-limit`: Grants permission to bypass home limit restrictions. (Default: OP)
-- `bht.bypass-access`: Grants permission to bypass home access restrictions. (Default: OP)
-- `bht.home`: Grants permission to teleport to a home. (Default: True)
-- `bht.tpr`: Grants permission to send teleport requests. (Default: True)
+- `bht.admin`: Allows the execution of admin-only commands such as reload.
+- `bht.bypass-home-limit`: Grants permission to bypass home limit restrictions.
+- `bht.bypass-access`: Grants permission to bypass home access restrictions.
+- `bht.home`: Grants permission to teleport to a home.
+- `bht.tpr`: Grants permission to send teleport requests.
 
 ## Installation 📥
 
 1. Download the BHT.jar file from the Releases section.
-2. Place the BHT.jar file into the plugins folder of your Bukkit server.
+2. Place the BHT.jar file into the plugins folder of your minecraft server.
 3. Restart or reload the server to enable the plugin.
 4. Configure the plugin according to your likings.
 
