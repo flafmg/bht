@@ -11,13 +11,17 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 
 ## Commands 🛠️
 
-- `/sethome <name> [public/private]`: Set a home at the player's current location.
-- `/delhome <name>`: Delete a player's home.
-- `/listhomes [player]`: List a player's homes.
-- `/home [player] <name>`: Teleport to a home.
-- `/tpa <player>`: Send a teleport request to another player.
-- `/tpaccept [player]`: Accept a teleport request from another player.
-- `/tpdeny [player]`: Deny a teleport request from another player.
+- `/home <player>`: Opens the graphical user interface (GUI) for managing homes.
+- `/home set <home> [public/private]`: Changes a home visibility setting (public or private).
+- `/home del <home>`: Deletes a home.
+- `/home change <home> [public/private]`: Changes the access level of a home (public or private).
+- `/home go <player> <home>`: Teleports to a specified home.
+
+- `/tpr send <player>`: Sends a teleport request to another player.
+- `/tpr accept <player>`: Accepts a teleport request from another player.
+- `/tpr cancel <player>`: Cancels a teleport request from/to another player.
+
+- `/bht reload`: Reloads plugin configuration.
 
 ## Permissions 🔐
 
