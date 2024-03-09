@@ -36,7 +36,7 @@ BHT is a Minecraft plugin designed to enhance the home teleportation experience 
 
 ## Support 🤝
 
-If you encounter any issues or have suggestions for improvement, youre welcome to open an issue on the [GitHub repository](https://github.com/flafmg/BHT/issues) :D.
+If you encounter any issues or have suggestions for improvement, you're welcome to open an issue on the [GitHub repository](https://github.com/flafmg/BHT/issues) :D.
 
 ## About ℹ️
 
