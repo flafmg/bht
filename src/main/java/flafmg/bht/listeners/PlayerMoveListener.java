@@ -28,7 +28,6 @@ public class PlayerMoveListener implements Listener {
         if (teleportManager.isPlayerPendingTeleport(player)) {
             Location from = event.getFrom();
             Location to = event.getTo();
-            // Verifica se o jogador mudou de bloco (posição)
             if (from.getBlockX() != to.getBlockX() || from.getBlockY() != to.getBlockY() || from.getBlockZ() != to.getBlockZ()) {
                 teleportManager.cancelTeleportation(player);
                 String cancelMessage = configManager.getTeleportCancelled();
